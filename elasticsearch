@@ -1,0 +1,38 @@
+put logs
+{
+  "mappings":{
+    "network": {
+      "properties": {
+        "ioctype": {
+        "type": "text"
+        },
+        "iocvalue":{
+          "type": "text", 
+          "analyzer":"my_analyzer"
+          },
+        "iocdate":{
+          "type": "date",
+          "format": "epoch_second"
+          },
+        "raw_message":{
+          "type": "text", 
+          "index": false
+        }
+      }
+    }
+  },
+  "settings":{
+      "analysis":{
+         "analyzer":{
+            "my_analyzer":{ 
+               "type":"standard",
+               "tokenizer":"standard",
+               "filter":[
+                  "lowercase"
+               ]
+            }
+         }
+
+      }
+   }
+}
